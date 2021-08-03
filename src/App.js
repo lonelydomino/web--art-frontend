@@ -17,8 +17,8 @@ class App extends Component {
     return (
       <div className="App">
         <Banner />
-        <NavBar />
-        <AdContainer />
+        <NavBar categories={this.props.categories}/>
+        <AdContainer categories={this.props.categories}/>
       </div>
     );
   }

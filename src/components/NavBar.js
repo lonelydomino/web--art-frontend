@@ -1,11 +1,17 @@
 import React from 'react'
-const NavBar = (props) => {
-     return (
+
+class NavBar extends React.Component {
+    renderLinks() {
+        return this.props.categories.map( category => {
+          return <li className="navlink" key={category.id}><span>{category.name}</span></li>})
+    }
+     render(){
+         return(
         <ul>
-            <li className="navlink"><span>Home</span></li>
-            <li className="navlink"><span>Home</span></li>
-            <li className="navlink"><span>Home</span></li>
+            {this.renderLinks()}
         </ul>
-     )
+
+         )
+     }
 }
 export default NavBar

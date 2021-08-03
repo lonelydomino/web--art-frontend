@@ -2,13 +2,13 @@ import React from 'react'
 import AdCard from '../components/AdCard'
 
 class AdContainer extends React.Component{
-    renderAdCards = () =>{
-        <AdCard />
+    renderAdCards = (categories) =>{
+        // debugger
     }
   render(){   
      return (
         <div>
-            {this.renderAdCards()}
+            {this.renderAdCards(this.props.categories)}
         </div>
      )
   }
