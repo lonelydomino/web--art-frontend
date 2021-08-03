@@ -33,3 +33,29 @@ ul {
   font-size: xxx-large;
   background: cornflowerblue;
 }
+/* Category Cards */
+.category-image {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  margin: 4%;
+  width: 85%;
+}
+
+#category-container {
+  background-color: rgb(196, 196, 196);
+  margin-top: 25px;
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  text-align: center;
+}
+#category-card {
+  background-color: #ffffff;
+  margin: 1%;
+}
+#tag-line {
+  font-weight: bold;
+  font-size: xx-large;
+  margin: 10px;
+}

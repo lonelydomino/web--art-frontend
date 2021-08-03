@@ -5,6 +5,7 @@ import AdContainer from './containers/AdContainer'
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchCategories } from './actions/categoryActions'
+import CategoryContainer from './containers/CategoryContainer';
 
 
 
@@ -18,6 +19,7 @@ class App extends Component {
       <div className="App">
         <Banner />
         <NavBar categories={this.props.categories}/>
+        <CategoryContainer categories={this.props.categories}/>
         <AdContainer categories={this.props.categories}/>
       </div>
     );

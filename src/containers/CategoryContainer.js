@@ -1,13 +1,17 @@
 import React from 'react'
-import CategoryCard from '../components/AdCard'
+import CategoryCard from '../components/CategoryCard'
 
 class CategoryContainer extends React.Component{
-    renderAdCards = (categories) =>{
-        // debugger
+    renderCategoryCards = (categories) =>{
+       let cards = categories.map(category =>{
+           return <CategoryCard key={category.id} category={category}/>
+       })
+       cards.length = 4
+       return cards
     }
   render(){   
      return (
-        <div>
+        <div id="category-container">
             {this.renderCategoryCards(this.props.categories)}
         </div>
      )
