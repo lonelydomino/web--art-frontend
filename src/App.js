@@ -1,10 +1,38 @@
 import './App.css';
+import Banner from './components/Banner';
+import NavBar from './components/NavBar'
+import AdContainer from './containers/AdContainer'
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { fetchCategories } from './actions/categoryActions'
 
-function App() {
-  return (
-    <div className="App">
-    </div>
-  );
+
+
+class App extends Component {
+  componentDidMount() {
+    console.log(this.props)
+    this.props.fetchCategories()
+  }
+  render(){
+    return (
+      <div className="App">
+        <Banner />
+        <NavBar />
+        <AdContainer />
+      </div>
+    );
+  }
+}
+const mapStateToProps = state => {
+  return {
+    categories: state.categories,
+    loading: state.loading
+  }
 }
 
-export default App;
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCategories: () => dispatch(fetchCategories())
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App)
