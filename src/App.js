@@ -8,6 +8,13 @@ import { connect } from 'react-redux'
 import { fetchCategories } from './actions/categoryActions'
 import { fetchItems } from './actions/itemActions'
 import CategoryContainer from './containers/CategoryContainer';
+import ItemsContainer from './containers/ItemsContainer'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 
@@ -22,8 +29,16 @@ class App extends Component {
       <div className="App">
         <Banner />
         <SearchBar />
-        <NavBar categories={this.props.categories}/>
-        <CategoryContainer categories={this.props.categories}/>
+        <Router>
+          <NavBar categories={this.props.categories}/>
+          <Switch>
+            <Route exact path="/">
+              <CategoryContainer categories={this.props.categories}/>
+            </Route>
+            <Route path="/:id" component={ItemsContainer}/>
+          </Switch>
+        </Router>
+        {/* <CategoryContainer categories={this.props.categories}/> */}
         <AdContainer categories={this.props.categories}/>
       </div>
     );
