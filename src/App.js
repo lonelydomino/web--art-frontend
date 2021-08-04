@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchCategories } from './actions/categoryActions'
+import { fetchItems } from './actions/itemActions'
 import CategoryContainer from './containers/CategoryContainer';
 
 
@@ -14,6 +15,7 @@ class App extends Component {
   componentDidMount() {
     console.log(this.props)
     this.props.fetchCategories()
+    this.props.fetchItems()
   }
   render(){
     return (
@@ -36,7 +38,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchCategories: () => dispatch(fetchCategories())
+    fetchCategories: () => dispatch(fetchCategories()),
+    fetchItems: () => dispatch(fetchItems())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
