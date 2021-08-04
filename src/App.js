@@ -29,10 +29,13 @@ class App extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
+  
   return {
-    categories: state.categories,
-    loading: state.loading
+    categories: state.categoriesReducer.categories,
+    loading: state.categoriesReducer.loading,
+    items: state.itemsReducer.items
   }
 }
 
