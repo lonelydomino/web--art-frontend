@@ -21,7 +21,7 @@ const renderItems = (id, props) => {
 const ItemsContainer = (props) => {
     const {id} = useParams()
      return (
-        <div id="items-container">
+        <div className="items-container">
             {renderItems(id, props)}
         </div>
      )

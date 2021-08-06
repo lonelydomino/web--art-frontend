@@ -25,7 +25,6 @@ class App extends Component {
     this.props.fetchItems()
   }
   render(){
-    debugger
     return (
       <div className="App">
         <Banner />
@@ -37,7 +36,7 @@ class App extends Component {
               <CategoryContainer categories={this.props.categories}/>
             </Route>
             <Route path="/category/:id">
-              {/* <ItemsContainer items={this.props.items}/> */}
+              <ItemsContainer items={this.props.items}/>
             </Route> 
           </Switch>
         </Router>

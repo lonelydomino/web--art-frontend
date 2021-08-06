@@ -68,6 +68,49 @@ body{
   font-size: xx-large;
   margin: 10px;
 }
+
+/* ITEM CARD */
+
+.item-card {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+
+}
+.item-card:nth-child(even) {
+  background-color: #ccc;
+  color: #000;
+}
+.items-container {
+  width: 600px;
+  margin-top: 50px;
+
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(5, 300px);
+  grid-template-rows: 300px 300px 300px;
+  grid-auto-flow: row;
+}
+.item-image {
+  margin-left: 11%;
+  margin-right: auto;
+  z-index: 12;
+  width: 80%;
+  height: 8em;
+  object-fit: scale-down;
+}
+.inner {
+  width:80%;
+  margin-left: 9%;
+    /* object-fit: cover; */
+
+}
+p{
+  padding:0;
+  margin:0;
+  text-align: center;
+}
+
 /* SearchBar */
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 

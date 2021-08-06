@@ -2,10 +2,11 @@ import React from 'react'
 const CategoryCard = (props) => {
     
      return (
-         <div id="category-card">
+        <div id="category-card">
              <p id="tag-line">{props.category.tag_line}</p>
              <img className="category-image" key={props.category.id} src={`http://localhost:3000${props.category.image}`} alt={props.category.name}/>
-             <p style={{textAlign: "left", marginLeft: "9%"}}>See more</p></div>
+             <p style={{textAlign: "left", marginLeft: "9%"}}>See more</p>
+        </div>
      )
 }
 export default CategoryCard
