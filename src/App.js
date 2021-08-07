@@ -15,6 +15,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import NavWheel from './components/NavWheel';
 
 
 
@@ -27,6 +28,7 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+        <NavWheel />
         <Banner />
         <SearchBar />
         <Router>
