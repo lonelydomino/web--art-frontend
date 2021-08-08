@@ -28,10 +28,10 @@ class App extends Component {
   render(){
     return (
       <div className="App">
-        <NavWheel />
         <Banner />
         <SearchBar />
         <Router>
+          <NavWheel />
           <NavBar categories={this.props.categories}/>
           <Switch>
             <Route exact path="/">

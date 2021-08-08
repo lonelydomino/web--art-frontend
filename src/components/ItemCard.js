@@ -7,7 +7,7 @@ const ItemCard = (props) => {
 
             <h3>{props.item.name}</h3>
             <img className="item-image" src={`http://localhost:3000${props.item.image}`} alt={props.item.name}/>
-            <h3>Price: $20.99</h3>
+            <h3>Price: {props.item.price}</h3>
              <p>Rating: stars</p>
         </div>
         </div>

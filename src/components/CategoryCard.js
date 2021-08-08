@@ -1,6 +1,6 @@
 import React from 'react'
 const CategoryCard = (props) => {
-    
+    debugger
      return (
         <div id="category-card">
              <p id="tag-line">{props.category.tag_line}</p>
