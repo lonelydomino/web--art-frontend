@@ -16,6 +16,7 @@ import {
   Link
 } from "react-router-dom";
 import NavWheel from './components/NavWheel';
+import ItemPage from './components/ItemPage';
 
 
 
@@ -37,9 +38,12 @@ class App extends Component {
             <Route exact path="/">
               <CategoryContainer categories={this.props.categories}/>
             </Route>
-            <Route path="/category/:id">
+            <Route exact path="/category/:id">
               <ItemsContainer items={this.props.items}/>
             </Route> 
+            <Route exact path="/category/:categoryid/items/:id">
+                <ItemPage />
+            </Route>
           </Switch>
         </Router>
         {/* <CategoryContainer categories={this.props.categories}/> */}

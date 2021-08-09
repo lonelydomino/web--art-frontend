@@ -13,7 +13,7 @@ const renderItems = (id, props) => {
     
     let filteredItems = filterItems(id, props)
     return filteredItems.map(item => {
-        return <ItemCard item={item} />
+        return <ItemCard item={item} categoryId={id} />
     })
 }
 
