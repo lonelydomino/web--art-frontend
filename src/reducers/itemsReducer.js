@@ -11,6 +11,7 @@ const itemsReducer = (state={items: [], loading: false}, action) => {
               items: action.items,
               loading: false
           }
+      
        default: 
           return state
     }

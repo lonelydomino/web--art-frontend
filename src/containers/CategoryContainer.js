@@ -3,7 +3,6 @@ import CategoryCard from '../components/CategoryCard'
 
 class CategoryContainer extends React.Component{
     renderCategoryCards = (categories) =>{
-       debugger
        let cards = categories.map(category =>{
            return <CategoryCard key={category.id} category={category}/>
        })

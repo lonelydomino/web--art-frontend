@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { fetchCategories } from './actions/categoryActions'
 import { fetchItems } from './actions/itemActions'
+import { addToCart } from './actions/shoppingCartActions';
 import CategoryContainer from './containers/CategoryContainer';
 import ItemsContainer from './containers/ItemsContainer'
 import {
@@ -17,6 +18,7 @@ import {
 } from "react-router-dom";
 import NavWheel from './components/NavWheel';
 import ItemPage from './components/ItemPage';
+import ShoppingCart from './components/ShoppingCart';
 
 
 
@@ -32,19 +34,20 @@ class App extends Component {
         <Banner />
         <SearchBar />
         <Router>
-          <NavWheel />
-          <NavBar categories={this.props.categories}/>
-          <Switch>
+        <NavWheel />
+        <NavBar categories={this.props.categories}/>
+        <Switch>
             <Route exact path="/">
               <CategoryContainer categories={this.props.categories}/>
             </Route>
             <Route exact path="/category/:id">
               <ItemsContainer items={this.props.items}/>
             </Route> 
-            <Route exact path="/category/:categoryid/items/:id">
-                <ItemPage />
+            <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
+            <Route exact path="/cart">
+              <ShoppingCart />
             </Route>
-          </Switch>
+        </Switch>
         </Router>
         {/* <CategoryContainer categories={this.props.categories}/> */}
         <AdContainer categories={this.props.categories}/>
@@ -53,19 +56,21 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = currentState => {
   
   return {
-    categories: state.categoriesReducer.categories,
-    loading: state.categoriesReducer.loading,
-    items: state.itemsReducer.items
+    categories: currentState.categories.categories,
+    loading: currentState.categories.loading,
+    items: currentState.items.items,
+    shoppingCart: currentState.shoppingCart.items
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
-    fetchItems: () => dispatch(fetchItems())
+    fetchItems: () => dispatch(fetchItems()),
+    addToCart: () => dispatch(addToCart())
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

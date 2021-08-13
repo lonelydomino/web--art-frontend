@@ -6,14 +6,14 @@ const NavWheel = () => {
      return (
  
       <div id="container">
-        <div class="nav">
+        <div className="nav">
           <input type="checkbox"/>
             <span></span>
             <span></span>
-            <div class="menu">
+            <div className="menu">
               <li><NavLink to="/" exact>Home</NavLink></li>
               <li><a href="#">Log In</a></li>
-              <li><a href="#">Shopping Cart</a></li>
+              <li><NavLink to="/cart" exact> Shopping Cart </NavLink></li>
               <li><a href="#">About</a></li>
             </div>
         </div>
