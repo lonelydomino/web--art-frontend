@@ -14,6 +14,8 @@ const ShoppingCart = (props) => {
         <div class="shopping-cart">
            {renderCart(cart)}
            <p id="cart-total">Total: {cart.total} </p>
+           <button id="checkout-button">Check Out</button>
+
         </div>
      )
 }

@@ -21,11 +21,11 @@ const CartItem = (props) => {
      
             <div className="quantity">
                 <button className="plus-btn" type="button" name="button">
-                    <img src="plus.svg" alt="" />
+                    ^<img src="plus.svg" alt="" />
                 </button>
                 <input type="text" name="name" value="1" />
-                <button className="minus-btn" type="button" name="button">
-                    <img src="minus.svg" alt="" />
+                <button className="minus-btn" type="button" valu="v"name="button">
+                    v<img src="minus.svg" alt="" />
                 </button>
             </div>
      
