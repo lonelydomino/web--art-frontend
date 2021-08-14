@@ -19,6 +19,7 @@ import {
 import NavWheel from './components/NavWheel';
 import ItemPage from './components/ItemPage';
 import ShoppingCart from './components/ShoppingCart';
+import { updateQuery } from './actions/test';
 
 
 
@@ -32,8 +33,8 @@ class App extends Component {
     return (
       <div className="App">
         <Banner />
-        <SearchBar />
         <Router>
+        <SearchBar items={this.props.items}  updateQuery={this.props.updateQuery}/>
         <NavWheel />
         <NavBar categories={this.props.categories}/>
         <Switch>
@@ -41,8 +42,12 @@ class App extends Component {
               <CategoryContainer categories={this.props.categories}/>
             </Route>
             <Route exact path="/category/:id">
-              <ItemsContainer items={this.props.items}/>
+              <ItemsContainer items={this.props.items} query={this.props.query} updateQuery={this.props.updateQuery}/>
             </Route> 
+            <Route exact path="/search">
+              <ItemsContainer items={this.props.items} query={this.props.items.query} updateQuery={this.props.updateQuery}/>
+            </Route>
+
             <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
             <Route exact path="/cart">
               <ShoppingCart />
@@ -70,7 +75,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCategories: () => dispatch(fetchCategories()),
     fetchItems: () => dispatch(fetchItems()),
-    addToCart: () => dispatch(addToCart())
+    addToCart: () => dispatch(addToCart()),
+    updateQuery: (query) => dispatch(updateQuery(query))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)
