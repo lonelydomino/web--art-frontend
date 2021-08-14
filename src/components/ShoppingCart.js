@@ -10,12 +10,20 @@ const renderCart = (cart) => {
 }
 const ShoppingCart = (props) => {
    const cart = useSelector(state => state.shoppingCart)
+   if (cart.items.length === 0) {
+      return (
+         <div class="shopping-cart">
+           {renderCart(cart)}
+           <p id="no-items"> No Items :(</p>
+        </div>
+      )
+   }
      return (
+        
         <div class="shopping-cart">
            {renderCart(cart)}
            <p id="cart-total">Total: {cart.total} </p>
            <button id="checkout-button">Check Out</button>
-
         </div>
      )
 }

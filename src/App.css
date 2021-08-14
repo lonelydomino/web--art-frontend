@@ -429,3 +429,8 @@ input:focus {
   margin: 0;
   text-align: right;
 }
+#no-items {
+  padding: 36px;
+  margin: 0;
+  text-align: center;
+}
