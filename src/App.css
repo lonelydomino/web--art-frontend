@@ -38,9 +38,7 @@ body{
   background-color: rgb(37, 34, 175);
 }
 
-.active {
-  background-color: #04AA6D;
-}
+
 /* Banner */
 #banner img {
   max-width: 100%;
@@ -185,13 +183,15 @@ p{
 }
 
 .nav {
-  position: relative;
-  background-color: #fff;
-  padding: 20px;
-  transition: 0.5s;
-  border-radius: 50px;
-  overflow: hidden;
-  box-shadow: 0 8px 15px rgba(0,0,0,.2);
+    position: absolute;
+    background-color: #fff;
+    top: 5em;
+    left: 1em;
+    padding: 20px;
+    transition: 0.5s;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 8px 15px rgb(0 0 0 / 20%);
 }
 
 .menu {
@@ -202,8 +202,8 @@ p{
   transition: 0.5s;
 }
 
-.nav input:checked ~ .menu {
-  width: 450px;
+.nav, .menu {
+  width: 500px;
 }
 
 .menu li {
@@ -223,12 +223,7 @@ p{
   color: #161919;
 }
 
-.nav input {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  opacity: 0;
-}
+
 
 .nav span {
   position: absolute;
@@ -241,24 +236,7 @@ p{
   transition: 0.5s;
 }
 
-.nav input:checked ~ span {
-  background-color: #f974a1;
-}
 
-.nav span:nth-child(2) {
-  transform: translateY(-8px);
-}
-
-.nav input:checked ~ span:nth-child(2) {
-  transform: translateY(0) rotate(-45deg);
-}
-.nav span:nth-child(3) {
-  transform: translateY(8px);
-}
-
-.nav input:checked ~ span:nth-child(3) {
-  transform: translateY(0) rotate(45deg);
-}
 
 /* Item Page */
 

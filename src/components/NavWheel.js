@@ -7,9 +7,6 @@ const NavWheel = () => {
  
       <div id="container">
         <div className="nav">
-          <input type="checkbox"/>
-            <span></span>
-            <span></span>
             <div className="menu">
               <li><NavLink to="/" exact>Home</NavLink></li>
               <li><a href="#">Log In</a></li>
