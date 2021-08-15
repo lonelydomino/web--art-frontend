@@ -7,6 +7,9 @@ class SearchBar extends React.Component{
         query: '',
         isQuerySubmitted: false
     }
+
+    
+
     handleClick = (query) => {
         this.props.updateQuery(query)
         this.setState({

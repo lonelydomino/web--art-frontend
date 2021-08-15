@@ -20,6 +20,7 @@ import NavWheel from './components/NavWheel';
 import ItemPage from './components/ItemPage';
 import ShoppingCart from './components/ShoppingCart';
 import { updateQuery } from './actions/test';
+import LoginPage from './components/LoginPage';
 
 
 
@@ -47,7 +48,7 @@ class App extends Component {
             <Route exact path="/search">
               <ItemsContainer items={this.props.items} query={this.props.items.query} updateQuery={this.props.updateQuery}/>
             </Route>
-
+            <Route exact path="/login"><LoginPage/></Route>
             <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
             <Route exact path="/cart">
               <ShoppingCart />
