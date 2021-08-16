@@ -1,5 +1,4 @@
-import React, { createContext } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import {useSelector} from 'react-redux'
 import CartItem from './CartItem'
 
 const renderCart = (cart) => {
@@ -8,7 +7,7 @@ const renderCart = (cart) => {
    })
    return array
 }
-const ShoppingCart = (props) => {
+const ShoppingCart = () => {
    const cart = useSelector(state => state.shoppingCart)
    if (cart.items.length === 0) {
       return (
@@ -28,4 +27,4 @@ const ShoppingCart = (props) => {
      )
 }
 
-export default ShoppingCart
+export default (ShoppingCart)

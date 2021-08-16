@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import  { Redirect} from 'react-router-dom'
 
 class SearchBar extends React.Component{

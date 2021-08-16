@@ -1,4 +1,7 @@
 import React from 'react'
+import {signupUser} from '../actions/auth.js'
+import {loginUser} from '../actions/auth.js'
+import {connect} from 'react-redux'
 class LoginPage extends React.Component{
 
 	state = {
@@ -11,11 +14,15 @@ class LoginPage extends React.Component{
 			[e.target.name]: e.target.value
 		})
 	}
-	handleSubmit = (e) => {
+	handleSignupSubmit = (e) => {
 		e.preventDefault()
 		let credentials = this.state
 		this.props.signupUser(credentials)
-
+	}
+	handleLoginSubmit = (e) => {
+		e.preventDefault()
+		let credentials = this.state
+		this.props.loginUser(credentials)
 	}
     componentDidMount = () => {
         const signUpButton = document.getElementById('signUp');
@@ -34,14 +41,14 @@ class LoginPage extends React.Component{
      return (
          <>
         
-<div class="container" id="container">
-	<div class="form-container sign-up-container">
-		<form onSubmit={this.handleSubmit}>
+<div className="container" id="container">
+	<div className="form-container sign-up-container">
+		<form onSubmit={this.handleSignupSubmit}>
 			<h1>Create Account</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			<div className="social-container">
+				<a href="/" className="social"><i className="fab fa-facebook-f"></i></a>
+				<a href="/" className="social"><i className="fab fa-google-plus-g"></i></a>
+				<a href="/" className="social"><i className="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your email for registration</span>
 			<input type="text" name="name" onChange={this.handleChange} placeholder="Name" />
@@ -50,32 +57,32 @@ class LoginPage extends React.Component{
 			<button>Sign Up</button>
 		</form>
 	</div>
-	<div class="form-container sign-in-container">
-		<form action="#">
+	<div className="form-container sign-in-container">
+		<form onSubmit={this.handleLoginSubmit}>
 			<h1>Sign in</h1>
-			<div class="social-container">
-				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-				<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+			<div className="social-container">
+				<a href="/" className="social"><i className="fab fa-facebook-f"></i></a>
+				<a href="/" className="social"><i className="fab fa-google-plus-g"></i></a>
+				<a href="/" className="social"><i className="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your account</span>
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
-			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<input name="email" type="email" placeholder="Email" onChange={this.handleChange}/>
+			<input name="password" type="password" placeholder="Password" onChange={this.handleChange}/>
+			<a href="/">Forgot your password?</a>
+			<button type="submit">Sign In</button>
 		</form>
 	</div>
-	<div class="overlay-container">
-		<div class="overlay">
-			<div class="overlay-panel overlay-left">
+	<div className="overlay-container">
+		<div className="overlay">
+			<div className="overlay-panel overlay-left">
 				<h1>Welcome Back!</h1>
 				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" id="signIn">Sign In</button>
+				<button className="ghost" id="signIn">Sign In</button>
 			</div>
-			<div class="overlay-panel overlay-right">
+			<div className="overlay-panel overlay-right">
 				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" id="signUp">Sign Up</button>
+				<p>Register here!</p>
+				<button className="ghost" id="signUp">Sign Up</button>
 			</div>
 		</div>
 	</div>
@@ -85,4 +92,10 @@ class LoginPage extends React.Component{
      )
   }
 }
-export default LoginPage
+const mapDispatchToProps = (dispatch) => {
+	return{
+	signupUser: (credentials) => dispatch(signupUser(credentials)),
+    loginUser: (credentials) => dispatch(loginUser(credentials))
+}
+}
+export default connect(null, mapDispatchToProps)(LoginPage)

@@ -13,8 +13,7 @@ import ItemsContainer from './containers/ItemsContainer'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import NavWheel from './components/NavWheel';
 import ItemPage from './components/ItemPage';
@@ -23,6 +22,7 @@ import { updateQuery } from './actions/test';
 import LoginPage from './components/LoginPage';
 import withAuth from "./components/auth/withAuth";
 import {signupUser} from './actions/auth.js'
+import {loginUser} from './actions/auth.js'
 
 
 
@@ -41,11 +41,7 @@ class App extends Component {
         <NavWheel />
         <NavBar categories={this.props.categories}/>
         <Switch>
-        <Route
-            exact
-            path='/protected_route'
-            component={withAuth(ShoppingCart)}
-          />
+        <Route exact path='/cart' component={withAuth(ShoppingCart)}/>
             <Route exact path="/">
               <CategoryContainer categories={this.props.categories}/>
             </Route>
@@ -55,11 +51,8 @@ class App extends Component {
             <Route exact path="/search">
               <ItemsContainer items={this.props.items} query={this.props.items.query} updateQuery={this.props.updateQuery}/>
             </Route>
-            <Route exact path="/login"><LoginPage signupUser={this.props.signupUser}/></Route>
+            <Route exact path="/login"><LoginPage signupUser={this.props.signupUser} loginUser={this.props.loginUser}/></Route>
             <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
-            <Route exact path="/cart">
-              <ShoppingCart />
-            </Route>
         </Switch>
         </Router>
         <AdContainer categories={this.props.categories}/>
@@ -84,7 +77,8 @@ const mapDispatchToProps = dispatch => {
     fetchItems: () => dispatch(fetchItems()),
     addToCart: () => dispatch(addToCart()),
     updateQuery: (query) => dispatch(updateQuery(query)),
-    signupUser: (credentials) => dispatch(signupUser(credentials))
+    signupUser: (credentials) => dispatch(signupUser(credentials)),
+    loginUser: (credentials) => dispatch(loginUser(credentials))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

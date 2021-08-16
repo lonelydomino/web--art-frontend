@@ -7,7 +7,7 @@ import LoginPage from "../LoginPage";
 function withAuth(WrappedComponent) {
   class Wrapper extends React.Component {
     componentDidMount() {
-      this.props.dispatchCheckAuth();
+    //   this.props.dispatchCheckAuth();
     }
 
     render() {
