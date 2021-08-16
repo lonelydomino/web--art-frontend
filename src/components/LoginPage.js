@@ -1,5 +1,22 @@
 import React from 'react'
 class LoginPage extends React.Component{
+
+	state = {
+		email: '',
+		password: '',
+		name: ''
+	}
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+	handleSubmit = (e) => {
+		e.preventDefault()
+		let credentials = this.state
+		this.props.signupUser(credentials)
+
+	}
     componentDidMount = () => {
         const signUpButton = document.getElementById('signUp');
         const signInButton = document.getElementById('signIn');
@@ -19,7 +36,7 @@ class LoginPage extends React.Component{
         
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form onSubmit={this.handleSubmit}>
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -27,9 +44,9 @@ class LoginPage extends React.Component{
 				<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 			</div>
 			<span>or use your email for registration</span>
-			<input type="text" placeholder="Name" />
-			<input type="email" placeholder="Email" />
-			<input type="password" placeholder="Password" />
+			<input type="text" name="name" onChange={this.handleChange} placeholder="Name" />
+			<input type="email" name="email" onChange={this.handleChange} placeholder="Email" />
+			<input type="password" name="password" onChange={this.handleChange} placeholder="Password" />
 			<button>Sign Up</button>
 		</form>
 	</div>

@@ -21,6 +21,8 @@ import ItemPage from './components/ItemPage';
 import ShoppingCart from './components/ShoppingCart';
 import { updateQuery } from './actions/test';
 import LoginPage from './components/LoginPage';
+import withAuth from "./components/auth/withAuth";
+import {signupUser} from './actions/auth.js'
 
 
 
@@ -39,6 +41,11 @@ class App extends Component {
         <NavWheel />
         <NavBar categories={this.props.categories}/>
         <Switch>
+        <Route
+            exact
+            path='/protected_route'
+            component={withAuth(ShoppingCart)}
+          />
             <Route exact path="/">
               <CategoryContainer categories={this.props.categories}/>
             </Route>
@@ -48,14 +55,13 @@ class App extends Component {
             <Route exact path="/search">
               <ItemsContainer items={this.props.items} query={this.props.items.query} updateQuery={this.props.updateQuery}/>
             </Route>
-            <Route exact path="/login"><LoginPage/></Route>
+            <Route exact path="/login"><LoginPage signupUser={this.props.signupUser}/></Route>
             <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
             <Route exact path="/cart">
               <ShoppingCart />
             </Route>
         </Switch>
         </Router>
-        {/* <CategoryContainer categories={this.props.categories}/> */}
         <AdContainer categories={this.props.categories}/>
       </div>
     );
@@ -77,7 +83,8 @@ const mapDispatchToProps = dispatch => {
     fetchCategories: () => dispatch(fetchCategories()),
     fetchItems: () => dispatch(fetchItems()),
     addToCart: () => dispatch(addToCart()),
-    updateQuery: (query) => dispatch(updateQuery(query))
+    updateQuery: (query) => dispatch(updateQuery(query)),
+    signupUser: (credentials) => dispatch(signupUser(credentials))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

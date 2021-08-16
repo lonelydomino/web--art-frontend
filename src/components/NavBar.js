@@ -9,7 +9,7 @@ class NavBar extends React.Component {
      render(){
          return(
         <ul>
-            {this.renderLinks()}
+            {this.props.categories ? this.renderLinks() : null}
         </ul>
 
          )  

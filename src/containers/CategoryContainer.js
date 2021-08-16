@@ -11,8 +11,10 @@ class CategoryContainer extends React.Component{
     }
   render(){   
      return (
-        <div id="category-container">
-            {this.renderCategoryCards(this.props.categories)}
+        <div id="container1">
+            <div id="category-container">
+                  {this.props.categories ? this.renderCategoryCards(this.props.categories) : null}
+            </div>
         </div>
      )
   }
