@@ -3,21 +3,48 @@
 //       dispatch({ type: 'ADD_TO_CART', payload: item})
 //     }
 //   }
+export const fetchShoppingCart = () => {
+  return (dispatch) => {
+    dispatch({ type: 'LOADING_SHOPPING_CART'})
+    fetch('http://localhost:3000/categories')
+    .then(resp => resp.json())
+    .then( json => {
+      dispatch({ type: 'ADD_CATEGORIES', categories: json})
+    })
+  }
+}
 
-
-  export const addToCart = (item) => {
+  export const addToCart = (item, currentUser) => {
     return (dispatch) => {
-      return fetch("http://localhost:3000/cart", {
-        method: "POST",
+      let newItem = {
+        item,
+        cart: {id: currentUser.data.id}
+        
+      }
+      const configObj = {
+        method: "PATCH",
         headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
+            accept: "application/json",
+            "Content-Type": "application/json"
         },
+        body: JSON.stringify(newItem)
+    }
+      fetch(`http://localhost:3000/shopping_carts/${currentUser.data.id}`, configObj)
+      .then(resp => {
+          if (resp.ok) {
+              return resp
+                      .json()
+                      .then(json => dispatch({ type: 'ADD_TO_CART', payload: item}))
+          } else {
+              return resp
+                      .json()
+                      // .then((errors) => {
+                      //     dispatch({type: ERROR, payload: errors})
+                      //     return Promise.reject(errors);
+                      // });
+          }
       })
-      .then(resp => resp.json())
-      .then(json =>{
-        debugger
-        dispatch({ type: 'ADD_TO_CART', payload: item})
-      })
+
+    
     }
   }

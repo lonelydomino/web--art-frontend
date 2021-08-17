@@ -1,8 +1,9 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../actions/shoppingCartActions'
+import { connect } from 'react-redux'
 
-const displayItem = (item, dispatch) => {
+const displayItem = (item, dispatch, currentUser) => {
    if (!item){
       return
    }
@@ -15,7 +16,7 @@ const displayItem = (item, dispatch) => {
             <h1 className={"itempage-title"}>{item.name}</h1>
             <h2 className={"itempage-price"}>${item.price}</h2>
             <p>description here</p>
-            <button className="addtocart-button" onClick={() => dispatch(addToCart(item))}>Add to Cart</button>
+            <button className="addtocart-button" onClick={() => dispatch(addToCart(item, currentUser))}>Add to Cart</button>
             <br/>
             <p> Ratings placeholder</p>
          </div>
@@ -28,8 +29,12 @@ const ItemPage = (props) => {
 
      return (   
         <div id="itempage-container">
-           {displayItem(item[0],dispatch)}
+           {displayItem(item[0],dispatch, props.currentUser)}
         </div>
      )
 }
-export default ItemPage
+
+const mapStateToProps = ({ auth: { authChecked, loggedIn, currentUser } }) => {
+   return { authChecked, loggedIn, currentUser };
+ };
+export default connect(mapStateToProps)(ItemPage)
