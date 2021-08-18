@@ -28,7 +28,6 @@ import {loginUser} from './actions/auth.js'
 
 class App extends Component {
   componentDidMount() {
-    console.log(this.props)
     this.props.fetchCategories()
     this.props.fetchItems()
   }

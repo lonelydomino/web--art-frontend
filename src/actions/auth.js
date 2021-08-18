@@ -69,8 +69,7 @@ export const signupUser = (credentials) => {
       }).then((res) => {
         if (res.ok) {
           setToken(res.headers.get("Authorization"));
-          return res
-            .json()
+          return res.json()
             .then((userJson) => {
               dispatch(fetchShoppingCart(userJson.data.id))
               dispatch({ type: AUTHENTICATED, payload: userJson })

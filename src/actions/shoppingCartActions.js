@@ -1,8 +1,4 @@
-// export const addToCart = (item) => {
-//     return (dispatch) => {
-//       dispatch({ type: 'ADD_TO_CART', payload: item})
-//     }
-//   }
+
 export const fetchShoppingCart = (userId) => {
   return (dispatch) => {
     dispatch({ type: 'LOADING_SHOPPING_CART'})
@@ -18,7 +14,7 @@ export const fetchShoppingCart = (userId) => {
     return (dispatch) => {
       let newItem = {
         item,
-        cart: {id: currentUser.data.id}
+        cart: {id: currentUser.id}
       }
       const configObj = {
         method: "PATCH",
@@ -28,7 +24,7 @@ export const fetchShoppingCart = (userId) => {
         },
         body: JSON.stringify(newItem)
     }
-      fetch(`http://localhost:3000/shopping_carts/${currentUser.data.id}`, configObj)
+      fetch(`http://localhost:3000/shopping_carts/${currentUser.id}`, configObj)
       .then(resp => {
           if (resp.ok) {
               return resp
