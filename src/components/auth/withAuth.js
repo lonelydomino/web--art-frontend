@@ -14,7 +14,6 @@ function withAuth(WrappedComponent) {
 
     render() {
       if (!this.props.authChecked) {
-        // debugger
         return <LoadingSpinner />;
       } else if (!this.props.loggedIn) {
         return (
@@ -24,7 +23,6 @@ function withAuth(WrappedComponent) {
           </>
         );
       } else {
-        // debugger
         return <WrappedComponent {...this.props} />;
       }
     }

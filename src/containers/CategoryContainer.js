@@ -1,5 +1,7 @@
 import React from 'react'
 import CategoryCard from '../components/CategoryCard'
+import {connect} from 'react-redux'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 class CategoryContainer extends React.Component{
     renderCategoryCards = (categories) =>{
@@ -10,6 +12,10 @@ class CategoryContainer extends React.Component{
        return cards
     }
   render(){   
+     if(this.props.loading){
+        return<LoadingSpinner />
+     }
+     else {
      return (
         <div id="container1">
             <div id="category-container">
@@ -17,6 +23,13 @@ class CategoryContainer extends React.Component{
             </div>
         </div>
      )
+     }
   }
 }
-export default CategoryContainer
+const mapStateToProps = (state) => {
+   return {
+      loading: state.categories.loading,
+      categories: state.categories.categories
+   }
+}
+export default connect(mapStateToProps)(CategoryContainer)

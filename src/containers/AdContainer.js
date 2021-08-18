@@ -3,7 +3,6 @@ import React from 'react'
 
 class AdContainer extends React.Component{
     renderAdCards = (categories) =>{
-        // debugger
     }
   render(){   
      return (

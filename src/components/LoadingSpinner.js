@@ -1,11 +1,16 @@
 import React from "react";
-import { ImSpinner3 } from "react-icons/im";
-
+import SyncLoader from "react-spinners/SyncLoader";
+import { css } from "@emotion/react";
 const LoadingSpinner = () => {
+   const override = css`
+    display: block;
+    margin: 11;
+    border-color: yellow;
+  `;
   return (
-    <div className='fixed top-0 flex items-center w-screen h-screen z-20 bg-gray-700 bg-opacity-70'>
-      <div className='text-5xl text-white text-center w-10 mx-auto'>
-        <ImSpinner3 className='animate-spin' />
+    <div className="box">
+      <div className="sweet-loading">
+        <SyncLoader size={50} css={override} color={"#123abc"} loading={true} speedMultiplier={1} />
       </div>
     </div>
   );

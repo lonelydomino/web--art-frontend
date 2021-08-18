@@ -26,14 +26,20 @@ import {loginUser} from './actions/auth.js'
 
 
 
+
 class App extends Component {
+  state = {
+    loading:true
+  }
   componentDidMount() {
     this.props.fetchCategories()
     this.props.fetchItems()
   }
   render(){
+   
     return (
       <div className="App">
+        
         <Banner />
         <Router>
         <SearchBar items={this.props.items}  updateQuery={this.props.updateQuery}/>

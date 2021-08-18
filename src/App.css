@@ -671,3 +671,28 @@ input {
 	width: 40px;
 }
 
+/* Log out button */
+.p-4 {
+  color: white;
+  border: none;
+  background: #4d95c7;
+  margin: 4px 2px;
+  padding: 5px 18px;
+  text-decoration: none;
+  font-weight: bolder;
+  border-radius: 4px;
+
+}
+
+/* Loader */
+.sweet-loading {
+  position: absolute;
+  top: 33em;
+  left: 56em;
+  z-index: 2;
+}
+/* Screen */
+.box {
+  background:rgb(141, 142, 211);
+  height:100vh;
+}
