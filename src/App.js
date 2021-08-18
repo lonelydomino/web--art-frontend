@@ -41,7 +41,7 @@ class App extends Component {
         <NavWheel />
         <NavBar categories={this.props.categories}/>
         <Switch>
-        <Route exact path='/cart' component={withAuth(ShoppingCart)}/>
+            <Route exact path='/cart' history={this.props.history} component={ withAuth(ShoppingCart)}/>
             <Route exact path="/">
               <CategoryContainer categories={this.props.categories}/>
             </Route>
@@ -51,7 +51,7 @@ class App extends Component {
             <Route exact path="/search">
               <ItemsContainer items={this.props.items} query={this.props.items.query} updateQuery={this.props.updateQuery}/>
             </Route>
-            <Route exact path="/login"><LoginPage signupUser={this.props.signupUser} loginUser={this.props.loginUser}/></Route>
+            <Route exact path="/login" render={routeProps => <LoginPage {...routeProps} /> } />
             <Route exact path="/category/:categoryid/items/:itemid" render={routeProps => <ItemPage {...routeProps}/>} />
         </Switch>
         </Router>
@@ -78,7 +78,7 @@ const mapDispatchToProps = dispatch => {
     addToCart: () => dispatch(addToCart()),
     updateQuery: (query) => dispatch(updateQuery(query)),
     signupUser: (credentials) => dispatch(signupUser(credentials)),
-    loginUser: (credentials) => dispatch(loginUser(credentials))
+    loginUser: (credentials, history) => dispatch(loginUser(credentials, history))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(App)

@@ -18,12 +18,12 @@ const renderItems = (id = 0, props, query) => {
     if (id !== 0){
         let filteredItems = filterItems(id, props)
         return filteredItems.map(item => {
-            return <ItemCard item={item} categoryId={id} />
+            return <ItemCard item={item} key={item.name} categoryId={id} />
         })
     }
     if(query) {
         return filteredSearch(props, query).map(item => {
-            return <ItemCard item={item} categoryId={id} />
+            return <ItemCard item={item} key={item.name} categoryId={id} />
         })
     }
     debugger

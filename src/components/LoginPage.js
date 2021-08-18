@@ -1,7 +1,9 @@
 import React from 'react'
-import {signupUser} from '../actions/auth.js'
-import {loginUser} from '../actions/auth.js'
+// import {signupUser} from '../actions/auth.js'
+// import {loginUser} from '../actions/auth.js'
 import {connect} from 'react-redux'
+import { loginUser, signupUser } from '../actions/auth'
+// import { useHistory } from 'react-router-dom'
 class LoginPage extends React.Component{
 
 	state = {
@@ -18,11 +20,14 @@ class LoginPage extends React.Component{
 		e.preventDefault()
 		let credentials = this.state
 		this.props.signupUser(credentials)
+		this.props.history.push("/")
 	}
 	handleLoginSubmit = (e) => {
 		e.preventDefault()
 		let credentials = this.state
-		this.props.loginUser(credentials)
+		let history = this.props.history
+		this.props.loginUser(credentials, history)
+		this.props.history.push("/")
 	}
     componentDidMount = () => {
         const signUpButton = document.getElementById('signUp');
@@ -37,7 +42,8 @@ class LoginPage extends React.Component{
             container.classList.remove("right-panel-active");
         });
     }
-  render(){   
+  render(){ 
+	  
      return (
          <>
         
@@ -93,9 +99,11 @@ class LoginPage extends React.Component{
   }
 }
 const mapDispatchToProps = (dispatch) => {
-	return{
-	signupUser: (credentials) => dispatch(signupUser(credentials)),
-    loginUser: (credentials) => dispatch(loginUser(credentials))
+	return {
+		signupUser: (credentials) => dispatch(signupUser(credentials)),
+		loginUser: (credentials) => dispatch(loginUser(credentials))
+	}
 }
-}
+
+
 export default connect(null, mapDispatchToProps)(LoginPage)

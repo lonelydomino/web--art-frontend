@@ -1,4 +1,5 @@
 import { AUTHENTICATED, NOT_AUTHENTICATED } from '.'
+import { fetchShoppingCart } from './shoppingCartActions';
 
 const setToken = (token) => {
   localStorage.setItem("token", token);
@@ -23,7 +24,6 @@ export const checkAuth = () => {
         }
       }).then((res) => {
         if (res.ok) {
-            debugger
           return res.json().then(user => dispatch({type: AUTHENTICATED, payload: user}))
         } else {
           return Promise.reject(dispatch({type: NOT_AUTHENTICATED}))
@@ -71,9 +71,11 @@ export const signupUser = (credentials) => {
           setToken(res.headers.get("Authorization"));
           return res
             .json()
-            .then((userJson) =>
+            .then((userJson) => {
+              dispatch(fetchShoppingCart(userJson.data.id))
               dispatch({ type: AUTHENTICATED, payload: userJson })
-            );
+            })
+            
         } else {
           return res.json().then((errors) => {
             dispatch({ type: NOT_AUTHENTICATED });

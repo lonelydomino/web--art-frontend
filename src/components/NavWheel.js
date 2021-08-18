@@ -13,9 +13,9 @@ const NavWheel = ({ authChecked, loggedIn, currentUser }) => {
       <div id="nav-container">
         <div className="nav">
             <div className="menu">
-              <li><NavLink to="/" exact>Home</NavLink></li>
-              <li><NavLink to="/cart" exact> Shopping Cart </NavLink></li>
-              <li>{loggedIn ? (<><a>{currentUser.data.email} <LogOutButton /></a> </>): (<NavLink to="/login" exact>Log In</NavLink>)}</li>
+              <li key="1"><NavLink to="/" exact>Home</NavLink></li>
+              <li key="2"><NavLink to="/cart" exact> Shopping Cart </NavLink></li>
+              <li key="3">{loggedIn ? (<><a>{currentUser.email} <LogOutButton /></a> </>): (<NavLink to="/login" exact>Log In</NavLink>)}</li>
             </div>
         </div>
       </div>
