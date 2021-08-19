@@ -8,9 +8,8 @@ const ItemCard = (props) => {
                     <div className="inner">
                     <h3>{props.item.name}</h3>
                     <img className="item-image" src={`http://localhost:3000${props.item.image}`} alt={props.item.name}/>
-                    <h3>Price: {props.item.price}</h3>
-                    <p>Rating: stars</p>
-                    </div>
+                    <h3>$ {props.item.price}</h3>
+               </div>
                </div>
           </NavLink>
 

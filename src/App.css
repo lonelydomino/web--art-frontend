@@ -59,7 +59,7 @@ body{
   background-color: rgb(141, 142, 211);
   margin-top: 25px;
   margin: 0 auto;
-  width: 90%;
+  width: 100%;
   text-align: center;
   padding-top: 45px;
   display: block;
@@ -87,6 +87,11 @@ body{
   border-radius: 5px;
 
 }
+.item-card h3 {
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 26px;
+}
 .item-card:nth-child(even) {
   background-color: #ccc;
   color: #000;
@@ -94,15 +99,19 @@ body{
 /* Items Container */
 
 .items-container {
-  width: 600px;
-  margin-top: 50px;
-  margin-left: 2%;
-  margin-right: auto;
-  display: grid;
-  grid-gap: 10px;
-  grid-template-columns: repeat(5, 300px);
-  grid-template-rows: 300px 300px 300px;
-  grid-auto-flow: row;
+      /* color: azure; */
+      background:rgb(141, 142, 211);
+      /* width: 600px; */
+      margin-top: 6px;
+      /* margin-left: 2%; */
+      padding-left: 2.4em;
+      margin-right: auto;
+      display: grid;
+      grid-gap: 10px;
+      grid-template-columns: repeat(5, 300px);
+      grid-template-rows: 300px 300px 300px;
+      grid-auto-flow: row;
+  
 }
 .item-image {
   margin-left: 11%;
