@@ -2,6 +2,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../actions/shoppingCartActions'
 import { connect } from 'react-redux'
+import CustomizedSnackbars from '../components/FlashMessage'
 
 const displayItem = (item, dispatch, currentUser) => {
    if (!item){
@@ -15,10 +16,8 @@ const displayItem = (item, dispatch, currentUser) => {
          <div className="column">
             <h1 className={"itempage-title"}>{item.name}</h1>
             <h2 className={"itempage-price"}>${item.price}</h2>
-            <p>description here</p>
             <button className="addtocart-button" onClick={() => dispatch(addToCart(item, currentUser))}>Add to Cart</button>
             <br/>
-            <p> Ratings placeholder</p>
          </div>
       </div>
    )
@@ -28,13 +27,18 @@ const ItemPage = (props) => {
    const dispatch = useDispatch()
 
      return (   
-        <div id="itempage-container">
+        <>
+                	{ props.showMessage ? <div className="flash-message"><CustomizedSnackbars message={props.message}/></div> : null}
+
+         <div id="itempage-container">
            {displayItem(item[0],dispatch, props.currentUser)}
         </div>
+        </>
+       
      )
 }
 
-const mapStateToProps = ({ auth: { authChecked, loggedIn, currentUser } }) => {
-   return { authChecked, loggedIn, currentUser };
+const mapStateToProps = ({ auth: { authChecked, loggedIn, currentUser, showMessage, message } }) => {
+   return { authChecked, loggedIn, currentUser, showMessage, message };
  };
 export default connect(mapStateToProps)(ItemPage)

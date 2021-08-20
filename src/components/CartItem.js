@@ -1,6 +1,9 @@
 import React from 'react'
-
+import { connect } from 'react-redux'
+import { removeFromCart } from '../actions/shoppingCartActions'
+import { useDispatch } from 'react-redux'
 const CartItem = (props) => {
+    const dispatch = useDispatch()
     let string = "http://localhost:3000" + props.item.image
      return (
         <div className="item">
@@ -14,23 +17,24 @@ const CartItem = (props) => {
             </div>
      
             <div className="description">
-                <span>Common Projects</span>
-                <span>Bball High</span>
-                <span>White</span>
+                <span>{props.item.name}</span>
+                <span>{props.item.category.name}</span>
             </div>
+            <div >
+                <div className="total-price">
+                    <p>${props.item.price}</p>
+                <button className="delete-button" onClick={() => dispatch(removeFromCart(props.currentUser, props.item))} type="button" name="button">X</button>
+                </div>
+            </div>          
+         
      
-            <div className="quantity">
-                <button className="plus-btn" type="button" name="button">
-                    ^<img src="plus.svg" alt="" />
-                </button>
-                <input type="text" name="name" value="1" />
-                <button className="minus-btn" type="button" valu="v"name="button">
-                    v<img src="minus.svg" alt="" />
-                </button>
-            </div>
-     
-            <div className="total-price">{props.item.price}</div>
       </div>
      )
 }
-export default CartItem
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.auth.currentUser
+    }
+}
+
+export default connect(mapStateToProps)(CartItem)

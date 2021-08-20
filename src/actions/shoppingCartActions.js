@@ -1,6 +1,6 @@
 
 export const fetchShoppingCart = (userId) => {
-  return (dispatch) => {
+    return (dispatch) => {
     dispatch({ type: 'LOADING_SHOPPING_CART'})
     fetch(`http://localhost:3000/shopping_carts/${userId}`)
     .then(resp => resp.json())
@@ -29,7 +29,10 @@ export const fetchShoppingCart = (userId) => {
           if (resp.ok) {
               return resp
                       .json()
-                      .then(json => dispatch({ type: 'ADD_TO_CART', payload: item}))
+                      .then(json => {
+                        dispatch({type:'OPEN_ITEM_ADD_SUCCESS_MESSAGE'})
+                        dispatch({ type: 'ADD_TO_CART', payload: item})
+                      }  )
           } else {
               return resp
                       .json()
@@ -43,3 +46,38 @@ export const fetchShoppingCart = (userId) => {
     
     }
   }
+
+export const removeFromCart = (user, item) => {
+  return(dispatch) => {
+    let itemId = item.id
+    let userId = user.id
+    
+    const configObj = {
+      method: "DELETE",
+      headers: {
+          accept: "application/json",
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(itemId)
+  }
+  fetch(`http://localhost:3000/shopping_carts/${userId}`, configObj)
+  .then(resp => {
+    if (resp.ok) {
+      dispatch({type: "REMOVE_FROM_CART", payload: item})
+        return resp.json()
+    } else {
+        return resp
+                // .json()
+                // .then((errors) => {
+                //     dispatch({type: ERROR, payload: errors})
+                //     return Promise.reject(errors);
+                // });
+    }
+})
+// .catch(err => dispatch({type: ERROR, payload: err}))
+
+  }
+
+
+
+} 

@@ -45,8 +45,9 @@ export const signupUser = (credentials) => {
           setToken(res.headers.get("Authorization"));
           return res
             .json()
-            .then((userJson) =>
-              dispatch({ type: AUTHENTICATED, payload: userJson })
+            .then((userJson) =>{
+
+              dispatch({ type: AUTHENTICATED, payload: userJson })}
             );
         } else {
           return res.json().then((errors) => {
@@ -71,8 +72,10 @@ export const signupUser = (credentials) => {
           setToken(res.headers.get("Authorization"));
           return res.json()
             .then((userJson) => {
+              dispatch({type:'OPEN_LOGIN_SUCCESS_MESSAGE'})
               dispatch(fetchShoppingCart(userJson.data.id))
               dispatch({ type: AUTHENTICATED, payload: userJson })
+              
             })
             
         } else {

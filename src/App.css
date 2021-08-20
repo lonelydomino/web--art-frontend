@@ -104,11 +104,11 @@ body{
       /* width: 600px; */
       margin-top: 6px;
       /* margin-left: 2%; */
-      padding-left: 2.4em;
+      padding-left: 6.4em;
       margin-right: auto;
       display: grid;
       grid-gap: 10px;
-      grid-template-columns: repeat(5, 300px);
+      grid-template-columns: repeat(4, 300px);
       grid-template-rows: 300px 300px 300px;
       grid-auto-flow: row;
   
@@ -199,8 +199,9 @@ p{
 
 .nav {
   position: absolute;
-  background-color: #1d0090;  /* top: 5em; */
-  left: -36em;
+  background-color: #1d0090;
+  top: 0em;
+  left: -32em;
   padding: 8px;
   transition: 0.5s;
   border-radius: 50px;
@@ -461,7 +462,7 @@ body {
 	/* background: #f6f5f7; */
 	display: flex;
 	/* justify-content: center; */
-	align-items: center;
+	/* align-items: center; */
 	flex-direction: column;
 	font-family: 'Montserrat', sans-serif;
 	height: 100vh;
@@ -543,7 +544,7 @@ input {
 .container {
   margin-top: 80px;
     /* padding-top: 20px; */
-  left: 30em;
+  left: 25%;
 	background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
@@ -704,4 +705,9 @@ input {
 .box {
   background:rgb(141, 142, 211);
   height:100vh;
+}
+
+/* Flash Messages */
+.flash-message {
+  position: absolute;
 }

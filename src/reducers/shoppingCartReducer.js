@@ -17,8 +17,12 @@ const shoppingCartReducer = (state = {items: [],userId:0, id:0, total: 0}, actio
                 items: [...state.items, action.payload],
                 total: state.total + action.payload.price
             }
-        case 'REMOVE_ITEM':
-            return
+        case 'REMOVE_FROM_CART':
+            const newItems = state.items.filter(item => item.id !== action.payload.id)
+            return {...state,
+                items: newItems,
+                total: state.total - action.payload.price
+            }
         default:
             return state
     }

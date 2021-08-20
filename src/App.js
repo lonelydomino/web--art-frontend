@@ -27,6 +27,7 @@ import {loginUser} from './actions/auth.js'
 
 
 
+
 class App extends Component {
   state = {
     loading:true
@@ -39,7 +40,7 @@ class App extends Component {
    
     return (
       <div className="App">
-        
+
         <Banner />
         <Router>
         <SearchBar items={this.props.items}  updateQuery={this.props.updateQuery}/>

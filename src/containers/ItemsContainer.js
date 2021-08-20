@@ -14,10 +14,8 @@ const filteredSearch = (props, query) => {
         return item.name.toUpperCase().includes(query.toUpperCase())
     })
 }
-const categorySearch = (props, category) => {
-    
-}
-const renderItems = (id = 0, props, query, category) => {
+
+const renderItems = (id = 0, props, query) => {
     if (id !== 0){
         let filteredItems = filterItems(id, props)
         return filteredItems.map(item => {
@@ -29,18 +27,13 @@ const renderItems = (id = 0, props, query, category) => {
             return <ItemCard item={item} key={item.name} categoryId={id} />
         })
     }
-    else if(category) {
-        categorySearch(props, category).map(item => {
-            return <ItemCard item={item} key={item.name} categoryId={id} />
-        })
-    }
+
 }
 
 
 const ItemsContainer = (props) => {
     const {id} = useParams()
     const query = useSelector(state => state.items.query)
-
      return (
         <div className="items-container">
             {renderItems(id, props, query)}
