@@ -1,5 +1,4 @@
 import React from 'react'
-// import AdCard from '../components/AdCard'
 
 class AdContainer extends React.Component{
     renderAdCards = (categories) =>{

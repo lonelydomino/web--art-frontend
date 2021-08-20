@@ -12,6 +12,3 @@ const CategoryCard = (props) => {
      )
 }
 export default CategoryCard
-
-// src={`/images/${props.category.image}`}
-//http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--34910136431e9bd9a3053fdd711c521493f262e2/furniture.jpeg?disposition=attachment

@@ -1,13 +1,7 @@
 import React from 'react'
-// import FlashMessage from 'react-flash-message'
-// import {signupUser} from '../actions/auth.js'
-// import {loginUser} from '../actions/auth.js'
 import {connect} from 'react-redux'
 import { loginUser, signupUser } from '../actions/auth'
-import Button from '@material-ui/core/Button';
-import CustomizedSnackbars from './FlashMessage';
 
-// import { useHistory } from 'react-router-dom'
 class LoginPage extends React.Component{
 
 	state = {
@@ -50,7 +44,6 @@ class LoginPage extends React.Component{
 	  
      return (
          <>
-	{/* { this.props.showMessage ? <div className="flash-message"><CustomizedSnackbars message=/></div> : null} */}
         
 <div className="container" id="container">
 	<div className="form-container sign-up-container">

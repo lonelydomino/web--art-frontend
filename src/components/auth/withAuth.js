@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { checkAuth } from "../../actions/auth";
 import LoadingSpinner from "../LoadingSpinner";
 import LoginPage from "../LoginPage";

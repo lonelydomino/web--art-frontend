@@ -99,6 +99,7 @@ export const signupUser = (credentials) => {
         },
       }).then((res) => {
         if (res.ok) {
+          dispatch({type: 'CLEAR_CART'})
           return dispatch({ type: NOT_AUTHENTICATED });
         } else {
           return res.json().then((errors) => {

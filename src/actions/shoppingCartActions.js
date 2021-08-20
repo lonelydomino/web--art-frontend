@@ -36,10 +36,6 @@ export const fetchShoppingCart = (userId) => {
           } else {
               return resp
                       .json()
-                      // .then((errors) => {
-                      //     dispatch({type: ERROR, payload: errors})
-                      //     return Promise.reject(errors);
-                      // });
           }
       })
 
@@ -67,14 +63,9 @@ export const removeFromCart = (user, item) => {
         return resp.json()
     } else {
         return resp
-                // .json()
-                // .then((errors) => {
-                //     dispatch({type: ERROR, payload: errors})
-                //     return Promise.reject(errors);
-                // });
+         
     }
 })
-// .catch(err => dispatch({type: ERROR, payload: err}))
 
   }
 

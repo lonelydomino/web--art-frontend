@@ -23,6 +23,13 @@ const shoppingCartReducer = (state = {items: [],userId:0, id:0, total: 0}, actio
                 items: newItems,
                 total: state.total - action.payload.price
             }
+            case 'CLEAR_CART':
+                return {
+                    items: [],
+                    userId: 0,
+                    id: 0,
+                    total: 0
+                }
         default:
             return state
     }

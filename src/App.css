@@ -697,8 +697,8 @@ input {
 /* Loader */
 .sweet-loading {
   position: absolute;
-  top: 33em;
-  left: 56em;
+  top: 30em;
+  left: 44%;
   z-index: 2;
 }
 /* Screen */
