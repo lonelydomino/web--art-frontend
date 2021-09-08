@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { removeFromCart } from '../actions/shoppingCartActions'
 import { useDispatch } from 'react-redux'
+import { useState } from 'react'
+
 const CartItem = (props) => {
+    const [number, setNumber] = useState(0)
     const dispatch = useDispatch()
     let string = "http://localhost:3000" + props.item.image
      return (
@@ -23,6 +26,7 @@ const CartItem = (props) => {
             <div >
                 <div className="total-price">
                     <p>${props.item.price}</p>
+                    <button onClick={() => setNumber(props.num + number)}>{number}</button>
                 <button className="delete-button" onClick={() => dispatch(removeFromCart(props.currentUser, props.item))} type="button" name="button">X</button>
                 </div>
             </div>          

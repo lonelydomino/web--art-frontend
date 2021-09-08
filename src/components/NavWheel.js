@@ -13,13 +13,11 @@ const NavWheel = ({ authChecked, loggedIn, currentUser }) => {
 console.log("in navwheel" + currentUser)
      return (
       <div id="nav-container">
-        <div className="nav">
-            <div className="menu">
+        <div className="nav col-s-12">
               <li key="1"><NavLink to="/" exact>Home</NavLink></li>
               <li key="2"><NavLink to="/cart" exact> Shopping Cart </NavLink></li>
-              <li key="3">{currentUser ? (<><NavLink to="/" exact>{currentUser.email} </NavLink> </>) : null }</li>
-              <li key="4">{ loggedIn ? (<LogOutButton />):(<NavLink to="/login" exact>Log In</NavLink>)} </li>
-            </div>
+              <li key="3">{ loggedIn ? (<LogOutButton />):(<NavLink to="/login" exact>Log In</NavLink>)} </li>
+              <li key="4">{currentUser ? (<><NavLink to="/" exact>{currentUser.email} </NavLink> </>) : null }</li>
         </div>
       </div>
   )

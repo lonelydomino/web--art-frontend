@@ -16,7 +16,7 @@ const getToken = () => {
 };
 export const checkAuth = () => {
     return (dispatch) => {
-      return fetch("http://localhost:3000/current_user", {
+      return fetch("https://web-mart-portfolio.herokuapp.com/current_user", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -33,7 +33,7 @@ export const checkAuth = () => {
   };
 export const signupUser = (credentials) => {
     return (dispatch) => {
-      return fetch("http://localhost:3000/signup", {
+      return fetch("https://web-mart-portfolio.herokuapp.com/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -60,7 +60,7 @@ export const signupUser = (credentials) => {
   };
   export const loginUser = (credentials) => {
     return (dispatch) => {
-      return fetch("http://localhost:3000/login", {
+      return fetch("https://web-mart-portfolio.herokuapp.com/login", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -69,6 +69,7 @@ export const signupUser = (credentials) => {
         body: JSON.stringify({ user: credentials }),
       }).then((res) => {
         if (res.ok) {
+          debugger
           setToken(res.headers.get("Authorization"));
           return res.json()
             .then((userJson) => {
@@ -90,12 +91,12 @@ export const signupUser = (credentials) => {
   
   export const logoutUser = () => {
     return (dispatch) => {
-      return fetch("http://localhost:3000/logout", {
+      return fetch("https://web-mart-portfolio.herokuapp.com/logout", {
         method: "DELETE",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          Authorization: getToken(),
+          Authorization: 1,
         },
       }).then((res) => {
         if (res.ok) {
