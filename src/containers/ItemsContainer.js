@@ -5,8 +5,10 @@ import ItemCard from '../components/ItemCard';
 const filterItems = (id, props) =>{
     let newId = parseInt(id)
     let sorted = props.items.filter(item => {
+        // debugger
         return item.category.id === newId
     })
+    // debugger
         return sorted
 }
 const filteredSearch = (props, query) => {
@@ -34,6 +36,7 @@ const renderItems = (id = 0, props, query) => {
 const ItemsContainer = (props) => {
     const {id} = useParams()
     const query = useSelector(state => state.items.query)
+    // debugger
      return (
         <div className="items-container">
             {renderItems(id, props, query)}

@@ -11,7 +11,7 @@ const displayItem = (item, dispatch, currentUser) => {
    return(
       <div>
          <div className="column">
-            <img className="itempage-image" src={`http://localhost:3000${item.image}`} alt={item.name}/>
+            <img className="itempage-image" src={`${item.image}`} alt={item.name}/>
          </div>
          <div className="column">
             <h1 className={"itempage-title"}>{item.name}</h1>

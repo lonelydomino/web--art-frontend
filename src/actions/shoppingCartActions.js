@@ -2,7 +2,7 @@
 export const fetchShoppingCart = (userId) => {
     return (dispatch) => {
     dispatch({ type: 'LOADING_SHOPPING_CART'})
-    fetch(`https://web-mart-portfolio.herokuapp.com/shopping_carts/${userId}`)
+    fetch(`http://localhost:3000/shopping_carts/${userId}`)
     .then(resp => resp.json())
     .then( json => {
       dispatch({ type: 'ADD_SHOPPING_CART', shoppingCart: json})
@@ -56,7 +56,7 @@ export const removeFromCart = (user, item) => {
       },
       body: JSON.stringify(itemId)
   }
-  fetch(`https://web-mart-portfolio.herokuapp.com/shopping_carts/${userId}`, configObj)
+  fetch(`http://localhost:3000/shopping_carts/${userId}`, configObj)
   .then(resp => {
     if (resp.ok) {
       dispatch({type: "REMOVE_FROM_CART", payload: item})

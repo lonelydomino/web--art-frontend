@@ -16,7 +16,7 @@ const getToken = () => {
 };
 export const checkAuth = () => {
     return (dispatch) => {
-      return fetch("https://web-mart-portfolio.herokuapp.com/current_user", {
+      return fetch("http://localhost:3000/current_user", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ export const signupUser = (credentials) => {
   };
   export const loginUser = (credentials) => {
     return (dispatch) => {
-      return fetch("https://web-mart-portfolio.herokuapp.com/login", {
+      return fetch("http://localhost:3000/login", {
         method: "POST",
         headers: {
           Accept: "application/json",

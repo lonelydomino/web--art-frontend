@@ -27,7 +27,7 @@ npm start
 ```
 With the server running, your favorite web browser will open and navigate to the following URL:
 ```ruby
-http://localhost:3001
+https://web-mart-portfolio.herokuapp.com
 ```
 Create an account and begin searching for items adding them to your shopping cart.
 
