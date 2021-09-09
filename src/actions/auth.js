@@ -33,7 +33,7 @@ export const checkAuth = () => {
   };
 export const signupUser = (credentials) => {
     return (dispatch) => {
-      return fetch("https://web-mart-portfolio.herokuapp.com/signup", {
+      return fetch("http://localhost:3000/signup", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -91,7 +91,7 @@ export const signupUser = (credentials) => {
   
   export const logoutUser = () => {
     return (dispatch) => {
-      return fetch("https://web-mart-portfolio.herokuapp.com/logout", {
+      return fetch("http://localhost:3000/logout", {
         method: "DELETE",
         headers: {
           Accept: "application/json",

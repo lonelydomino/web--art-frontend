@@ -24,7 +24,7 @@ export const fetchShoppingCart = (userId) => {
         },
         body: JSON.stringify(newItem)
     }
-      fetch(`https://web-mart-portfolio.herokuapp.com/shopping_carts/${currentUser.id}`, configObj)
+      fetch(`http://localhost:3000/shopping_carts/${currentUser.id}`, configObj)
       .then(resp => {
           if (resp.ok) {
               return resp

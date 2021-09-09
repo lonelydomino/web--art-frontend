@@ -7,7 +7,7 @@ import { useState } from 'react'
 const CartItem = (props) => {
     const [number, setNumber] = useState(0)
     const dispatch = useDispatch()
-    let string = "http://localhost:3000" + props.item.image
+    let string = props.item.image
      return (
         <div className="item">
             <div className="buttons">
