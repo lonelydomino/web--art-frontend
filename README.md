@@ -22,6 +22,9 @@ npm install
 ## Usage
 This application uses 'rails server' and 'npm server' to run a local server. Type the following in your terminal:
 ```ruby
+
+
+yes
 rails s
 npm start
 ```
